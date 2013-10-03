@@ -1,0 +1,33 @@
+Huffman Compression File Format
+
+	Binary Tree as 1's and 0's
+		if the first bit is a 1, use the built in Huffman Tree
+		000101111
+		Makes the binary Tree
+				   0
+				0     0
+			  1   0  1 1
+				 1 1
+		As letters
+				   0
+				0     0
+			  a   0  b c
+				 d e
+		Read the binary tree until we get down to a level containing all ones
+		keep vount of the number of ones we see. this is called "z"
+
+	Characters shown in the binary tree
+		XXXXXXXX repeated z times
+
+	Compressed Data
+		Unknown length
+		Traverse the binary tree until we hit a hex value, then write that to
+		the uncompressed output stream
+
+	Padding Bits
+		XXXXXXXX numbering the amount of bits prior to this byte to ignore.
+
+Compression Psuedo Code
+	read entire file
+		take frequencies of each byte
+	Add 
