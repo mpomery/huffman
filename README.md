@@ -2,7 +2,36 @@
 
 ##Code Overview
 
+###Compressed File Format
 
+The compressed file want to be as small as possible. It needs to hold the binary tree in a reconstrucatble form so we can traverse it while decompressing. After the binary tree we need the compressed data. At the end of the compressed data we require some padding bits that we can recognise as the compressed data may not fill bytes.
+
+####Binary Tree
+
+    Binary Tree as 1's and 0's
+    000101111
+    Makes the binary Tree
+                   0
+                0     0
+              1   0  1 1
+                 1 1
+        As letters
+                   0
+                0     0
+              a   0  b c
+             d e
+        Read the binary tree until we get down to a level containing all ones
+        keep count of the number of ones we see. this is called "z"
+    
+    Characters shown in the binary tree
+    XXXXXXXX repeated z times
+
+####Compressed Data
+* Unknown length
+* Traverse the binary tree until we hit a hex value, then write that to the uncompressed output stream
+
+####Padding Bits
+8 bits. Each on bit counts the number of bits prior to this byte to ignore.
 
 ##Project Overview
 
